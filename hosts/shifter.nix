@@ -2,14 +2,14 @@
 
 
 let
-  hostname = "nix-macbook-air";
-  username = "heywoodlh";
+  hostname = "shifter";
+  username = "quarkw";
 in {
   imports = [
-    ../roles/m1.nix
+    ../roles/arm.nix
     ../roles/defaults.nix
     ../roles/brew.nix
-    ../roles/yabai.nix
+    # ../roles/yabai.nix
     ../roles/network.nix
     ../roles/home-manager/settings.nix
   ];

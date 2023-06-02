@@ -1,16 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  description = "Spencer Heywood";
-  name = "Spencer Heywood";
-  shell = pkgs.bash;
+  description = "Quark Wei";
+  name = "Quark";
+  shell = pkgs.fish;
   # These packages will only be installed for your user
   # The binaries will be available in the following path: /etc/profiles/per-user/$USER/bin
   packages = [
-    pkgs.bash
-    pkgs.gcc
+    pkgs.fish
     pkgs.git
-    pkgs.gnupg
-    pkgs.tmux
   ];
 }

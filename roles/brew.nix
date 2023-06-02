@@ -8,13 +8,13 @@
     onActivation.upgrade = true;
     #onActivation.cleanup = "zap"; # Uncomment this if you want all brew packages not defined in this file to be removed when updated
     brews = [
-      "bash"
-      "coreutils"
-      "curl"
-      "git"
-      "m-cli"
-      "mas"
-      "zsh"
+      #"bash"
+      #"coreutils"
+      #"curl"
+      #"git"
+      #"m-cli"
+      #"mas"
+      #"zsh"
     ];
     extraConfig = ''
       cask_args appdir: "~/Applications"
@@ -28,17 +28,17 @@
       "homebrew/services"
     ];
     casks = [
-      "caffeine"
-      "discord"
-      "firefox"
-      "zoom"
+      #"caffeine"
+      #"discord"
+      #"firefox"
+      #"zoom"
     ];
     masApps = {
-      DaisyDisk = 411643860;
-      Vimari = 1480933944;
-      "WiFi Explorer" = 494803304;
-      "Reeder 5." = 1529448980;
-      "Okta Extension App" = 1439967473;
+      #DaisyDisk = 411643860;
+      #Vimari = 1480933944;
+      #"WiFi Explorer" = 494803304;
+      #"Reeder 5." = 1529448980;
+      #"Okta Extension App" = 1439967473;
     };
   };
 }

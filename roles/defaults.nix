@@ -10,27 +10,27 @@
   programs.nix-index.enable = true;
 
   # add nerd fonts
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" "Iosevka" ]; })
-  ];
+  #fonts.fonts = with pkgs; [
+  #  (nerdfonts.override { fonts = [ "Hack" "DroidSansMono" "Iosevka" ]; })
+  #];
 
   #system-defaults.nix
   system.keyboard = {
-    enableKeyMapping = true;
-    remapCapsLockToControl = true;
+    #enableKeyMapping = true;
+    #remapCapsLockToControl = true;
   };
   system.defaults = {
     dock = {
-      autohide = true;
+      #autohide = true;
       orientation = "bottom";
-      showhidden = true;
-      mineffect = "genie";
-      launchanim = true;
+      #showhidden = true;
+      #mineffect = "genie";
+      #launchanim = true;
       show-process-indicators = true;
       tilesize = 48;
-      static-only = true;
-      mru-spaces = false;
-      show-recents = false;
+      #static-only = true;
+      #mru-spaces = false;
+      #show-recents = false;
     };
     finder = {
       AppleShowAllExtensions = true;
@@ -38,9 +38,9 @@
       CreateDesktop = false; # disable desktop icons
     };
     trackpad = {
-      Clicking = true;
-      TrackpadThreeFingerDrag = true;
-      Dragging = true;
+      #Clicking = true;
+      #TrackpadThreeFingerDrag = true;
+      #Dragging = true;
     };
     # Apple firewall config: block all incoming connections and enable stealth mode
     alf = {

@@ -9,10 +9,10 @@ Codifies the following settings (in no particular order):
 - Installed applications with `brew` in [roles/brew.nix](./roles/brew.nix)
 - Tiling windows and custom keyboard shortcuts with Yabai and SKHD in [roles/yabai.nix](./roles/yabai.nix)
 - Firefox configuration with Home-Manager in [roles/home-manager/user.nix](./roles/home-manager/user.nix):
-  - Default Firefox profile named `default`: https://github.com/heywoodlh/nix-darwin-flake/blob/c4f90bdf0d6d79de791d14fa59a1b648035fa838/roles/home-manager/user.nix#L10-L121
-  - Better Firefox privacy tweaks: https://github.com/heywoodlh/nix-darwin-flake/blob/c4f90bdf0d6d79de791d14fa59a1b648035fa838/roles/home-manager/user.nix#L70-L121
-  - Minimal Firefox appearance tweaks with UserChrome.css: https://github.com/heywoodlh/nix-darwin-flake/blob/c4f90bdf0d6d79de791d14fa59a1b648035fa838/roles/home-manager/user.nix#L25-L67
-  - Installed Firefox Extensions with NUR: https://github.com/heywoodlh/nix-darwin-flake/blob/c4f90bdf0d6d79de791d14fa59a1b648035fa838/roles/home-manager/user.nix#L13-L24
+  - Default Firefox profile named `default`: https://github.com/quarkw/nix-darwin-flake/blob/c4f90bdf0d6d79de791d14fa59a1b648035fa838/roles/home-manager/user.nix#L10-L121
+  - Better Firefox privacy tweaks: https://github.com/quarkw/nix-darwin-flake/blob/c4f90bdf0d6d79de791d14fa59a1b648035fa838/roles/home-manager/user.nix#L70-L121
+  - Minimal Firefox appearance tweaks with UserChrome.css: https://github.com/quarkw/nix-darwin-flake/blob/c4f90bdf0d6d79de791d14fa59a1b648035fa838/roles/home-manager/user.nix#L25-L67
+  - Installed Firefox Extensions with NUR: https://github.com/quarkw/nix-darwin-flake/blob/c4f90bdf0d6d79de791d14fa59a1b648035fa838/roles/home-manager/user.nix#L13-L24
 - Other various settings in [roles](./roles)
 
 ## Requirements:
@@ -23,19 +23,19 @@ Codifies the following settings (in no particular order):
 
 ## Quickstart:
 
-Assuming you want to build the `m2-macbook-air` output, you'd use these commands:
+Assuming you want to build the `shifter` output, you'd use these commands:
 
 ```
-git clone https://github.com/heywoodlh/nix-darwin-flake
+git clone https://github.com/quarkw/nix-darwin-flake
 cd nix-darwin-flake
-darwin-rebuild switch --flake .#m2-macbook-air
+darwin-rebuild switch --flake .#shifter
 ``` 
 
 ## Making this your own:
 
 First, create a new repository using this repository as your template, using the following link: 
 
-https://github.com/heywoodlh/nix-darwin-flake/generate
+https://github.com/quarkw/nix-darwin-flake/generate
 
 Create a new MacOS configuration/output for your own machine in the `darwinConfigurations` section in `flake.nix`. Suppose that we wanted to name this output `mac-mini`, we would create an output in the `darwinConfigurations` section like this:
 
@@ -55,10 +55,10 @@ Then, create a new file in `./hosts/mac-mini.nix` with the following configurati
 
 let
   hostname = "mac-mini";
-  username = "heywoodlh";
+  username = "quarkw";
 in {
   imports = [
-    ../roles/m1.nix
+    ../roles/arm.nix
     ../roles/defaults.nix
     ../roles/brew.nix
     ../roles/yabai.nix
@@ -129,32 +129,32 @@ This snippet shows all of the inputs in the Flake:
 
 Each MacOS build is an output in [flake.nix](./flake.nix). This repository comes with two outputs/MacOS builds:
 
-- `m2-macbook-air`: an example build for settings required for an M2 Macbook Air
+- `shifter`: an example build for settings required for an M2 Macbook Air
 - `intel-macbook`: an example build for settings required for an Intel Macbook
 
 Each output/MacOS build has a corresponding file in [./hosts](./hosts) where configurations should be imported from the [./roles](./roles) directory. Any specific configuration for a particular machine should live in its file in the [./hosts](./hosts) directory.
 
-This snippet from `flake.nix` shows the Flake's output named `m2-macbook-air` and its corresponding config file `./hosts/m2-macbook-air.nix` being imported:
+This snippet from `flake.nix` shows the Flake's output named `shifter` and its corresponding config file `./hosts/shifter.nix` being imported:
 
 ```
   ...
   outputs = inputs@{ self, nixpkgs, darwin, home-manager, jovian-nixos, nur, ... }: {
     darwinConfigurations = {
       # m1-macbook 
-      "m2-macbook-air" = darwin.lib.darwinSystem {
+      "shifter" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = inputs;
-        modules = [ ./hosts/m2-macbook-air.nix ];
+        modules = [ ./hosts/shifter.nix ];
       };
   ...
 ```
 
-In `./hosts/m2-macbook-air.nix`, we can define which configurations we want to select from the `[./roles](./roles)` directory, for example:
+In `./hosts/shifter.nix`, we can define which configurations we want to select from the `[./roles](./roles)` directory, for example:
 
 ```
 ...
   imports = [
-    ../roles/m1.nix
+    ../roles/arm.nix
     ../roles/defaults.nix
     ../roles/brew.nix
     ../roles/yabai.nix
@@ -173,6 +173,6 @@ Currently, the Flake contains the following example configurations that are in t
 - Homebrew packages and settings:  [./roles/brew.nix](./roles/brew.nix)
 - Some network settings:  [./roles/network.nix](./roles/network.nix)
 - Yabai and SKHD for tiling windows:  [./roles/yabai.nix](./roles/yabai.nix)
-- Some settings for M1/M2 devices: [./roles/m1.nix](./roles/m1.nix)
+- Some settings for ARM devices: [./roles/arm.nix](./roles/arm.nix)
 - [Home-Manager](https://github.com/nix-community/home-manager) configurations: [./roles/home-manager](./roles/home-manager)
 
